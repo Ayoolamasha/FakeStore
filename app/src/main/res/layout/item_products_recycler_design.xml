@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="productUIData"
+            type="com.ayoolamasha.fakestore.featureProducts.domain.ProductsUiData" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_5"
+        app:cardCornerRadius="@dimen/radius_15"
+        app:cardElevation="@dimen/margin_5">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:onClick="@{clickListener}">
+
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                app:loadImage="@{productUIData.productImage}"
+                tools:src="@tools:sample/avatars" />
+
+
+            <TextView
+                android:id="@+id/productName"
+                style="@style/TextAppearance.BodyText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productUIData.productTitle}"
+                android:layout_marginTop="@dimen/margin_10"
+                android:textStyle="bold"
+                app:layout_constrainedWidth="true"
+                tools:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" />
+
+
+            <TextView
+                android:id="@+id/productPrice"
+                style="@style/TextAppearance.BodyText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="@dimen/subtitle_text_size_14"
+                android:text="@{`₦` + productUIData.productPrice.toString()}"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_5"
+                tools:text="₦ 109.95" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressTint="@color/rating_yellow"
+                android:rating="@{productUIData.productRating.floatValue()}"
+                tools:rating="3" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="productUIData"
+            type="com.ayoolamasha.fakestore.featureProducts.domain.ProductsUiData" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/backArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arrow_back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/productDetails"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        android:padding="@dimen/padding_5"/>
+
+                    <TextView
+                        android:id="@+id/productDetails"
+                        style="@style/TextAppearance.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/product_details"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="@dimen/width_0"
+                android:layout_height="@dimen/height_300"
+                app:loadImage="@{productUIData.productImage}"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:src ="@tools:sample/avatars"
+                android:layout_marginTop="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.BodyText2"
+                android:textStyle="bold"
+                android:text="@{productUIData.productTitle}"
+                tools:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@+id/productImage"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/categoryLabel"
+                android:layout_width="@dimen/width_0"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintVertical_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@+id/productName"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.BodyText1"
+                    android:textSize="@dimen/subtitle_text_size_14"
+                    android:text="@string/category"
+                    android:textStyle="bold"
+                    app:layout_constrainedWidth="true"
+                    android:layout_gravity="center_vertical"
+                    />
+
+
+                <TextView
+                    android:id="@+id/categoryName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.BodyText2"
+                    android:textSize="@dimen/subtitle_text_size_14"
+                    android:text="@{productUIData.productCategory}"
+                    tools:text="men's clothing"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_5"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.BodyText2"
+                android:textStyle="bold"
+                android:text="@{`₦` + productUIData.productPrice.toString()}"
+                tools:text="₦ 109.95"
+                android:layout_marginTop="@dimen/margin_5"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintVertical_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@id/categoryLabel"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ratingBar"
+                android:layout_width="@dimen/width_0"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin_5"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@id/productPrice"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:rating="@{productUIData.productRating.floatValue()}"
+                    tools:rating="3"
+                    android:numStars="5"
+                    android:isIndicator="true"
+                    android:progressTint="@color/rating_yellow"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/ratingCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.BodyText2"
+                    android:textSize="@dimen/subtitle_text_size_14"
+                    android:text="@{`(` + productUIData.productCount.toString() + `)`}"
+                    tools:text="@string/category"
+                    android:textStyle="bold"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/productDescHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.BodyText2"
+                android:textStyle="bold"
+                android:text="@string/product_des"
+                app:layout_constrainedWidth="true"
+                android:layout_marginTop="@dimen/margin_5"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+            <TextView
+                android:id="@+id/productDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.BodyText1"
+                android:text="@{productUIData.productDescription}"
+                tools:text="Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
+                app:layout_constrainedWidth="true"
+                android:layout_marginTop="@dimen/margin_10"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@+id/productDescHeader"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+            <!--- MAIN GUIDELINE -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@integer/guidelineStart" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@integer/guidelineEnd" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</layout>

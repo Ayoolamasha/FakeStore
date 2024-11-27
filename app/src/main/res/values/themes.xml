@@ -1,0 +1,62 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FakeStore.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/blue
+        </item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.BaseTheme.DayNight</item>
+
+    </style>
+
+    <style name="Theme.BaseTheme.DayNight" parent="Theme.BaseTheme.MainTheme">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorAccent">@color/white</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="Theme.BaseTheme.MainTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="scrimBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+
+        <!--System/Platform attributes-->
+        <item name="android:windowBackground">?android:colorBackground</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <!-- Customize your theme here. -->
+
+
+        <!--Typography-->
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Title</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.BodyText1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.BodyText2</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.TextButton</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Button</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.SubTitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.SubTitle2</item>
+
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fake Store</string>
+    <string name="product_details">Product Details</string>
+    <string name="product_des">Product Description</string>
+    <string name="retry">Retry</string>
+    <string name="category">Category:</string>
+</resources>
